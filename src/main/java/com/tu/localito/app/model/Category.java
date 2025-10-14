@@ -8,6 +8,7 @@ import jakarta.persistence.*;
 @Table(name = "categories")
 public class Category {
 
+	// ============================== 🔹 Atributos 🔹 ==============================
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_category")
@@ -16,6 +17,7 @@ public class Category {
     @Column(name = "category_name", length = 30, nullable = false)
     private String categoryName;
 
+	// ============================== 🔹 Constructores 🔹 ==============================
     // 🔹 Constructor vacío (requerido por JPA)
     public Category() {
     }
@@ -25,6 +27,7 @@ public class Category {
         this.categoryName = categoryName;
     }
 
+	// ============================== 🔹 Getters y Setters 🔹 ==============================
     // 🔹 Getters y Setters
     public Integer getIdCategory() {
         return idCategory;
@@ -42,6 +45,7 @@ public class Category {
         this.categoryName = categoryName;
     }
 
+	// ============================== 🔹 Overrided methods 🔹 ==============================
     // 🔹 Override toString()
     @Override
     public String toString() {

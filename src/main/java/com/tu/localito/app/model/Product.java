@@ -10,6 +10,7 @@ import jakarta.persistence.*;
 @Table(name = "products")
 public class Product {
 
+	// ============================== 🔹 Atributos 🔹 ==============================
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_product")
@@ -41,6 +42,7 @@ public class Product {
 	@Column(name = "is_active", columnDefinition = "TINYINT DEFAULT 1")
 	private Boolean isActive;
 
+	// ============================== 🔹 Constructores 🔹 ==============================
 	// 🔹 Constructor vacío
 	public Product() {
 	}
@@ -59,7 +61,7 @@ public class Product {
 		this.isActive = isActive;
 	}
 
-	// 🔹 Getters y Setters
+	// ============================== 🔹 Getters y Setters 🔹 ==============================
 	public Integer getIdProduct() {
 		return idProduct;
 	}
@@ -140,6 +142,7 @@ public class Product {
 		this.isActive = isActive;
 	}
 
+	// ============================== 🔹 Overrided methods 🔹 ==============================
 	// 🔹 Override toString()
 	@Override
 	public String toString() {
