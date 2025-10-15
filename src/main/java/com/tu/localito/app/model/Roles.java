@@ -1,10 +1,14 @@
 package com.tu.localito.app.model;
 
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
+
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -16,6 +20,8 @@ public class Roles {
 	@Column(name = "rol_name", length = 30, nullable = false)
 	private String rolName;
 	
+	@ManyToMany(mappedBy = "roles")
+	private Set<Users> users = new HashSet<>();
 	
 	public Roles(Long idRole, String rolName) {
 		this.idRole = idRole;

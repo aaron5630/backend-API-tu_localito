@@ -1,13 +1,19 @@
 package com.tu.localito.app.model;
 import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -15,11 +21,11 @@ import jakarta.persistence.Table;
 public class Users {
 	@Id
 	@Column(name = "id_user")
-	private Long id_user;
+	private Long idUser;
 	@Column(name = "first_name", length = 30, nullable = false)
-	private String first_name;
+	private String firstName;
 	@Column(name = "last_name", length = 30, nullable = false)
-	private String last_name;
+	private String lastName;
 	@Column(name = "password", length = 70, nullable = false)
 	private String password;
 	@Column(name = "email", length = 45, nullable = false)
@@ -35,13 +41,21 @@ public class Users {
 	@Column(name = "is_active", nullable = false)
 	private boolean isActive;
 	
+	@ManyToMany()
+	@JoinTable(
+		name="user_has_roles",
+		joinColumns = @JoinColumn(name = "user_id"),
+		inverseJoinColumns = @JoinColumn(name = "role_id")
+		)
+		Set<Roles> roles = new HashSet<>();
+	
 	public Users() {};
 	
 	public Users(Long id_user, String first_name, String last_name, String password, String email, String phone,
 			LocalDateTime createdAt, LocalDateTime updatedAt, boolean isActive) {
-		this.id_user = id_user;
-		this.first_name = first_name;
-		this.last_name = last_name;
+		this.idUser = id_user;
+		this.firstName = first_name;
+		this.lastName = last_name;
 		this.password = password;
 		this.email = email;
 		this.phone = phone;
@@ -49,23 +63,23 @@ public class Users {
 		this.updatedAt = updatedAt;
 		this.isActive = isActive;
 	}
-	public Long getId_user() {
-		return id_user;
+	public Long getIdUser() {
+		return idUser;
 	}
-	public void setId_user(Long id_user) {
-		this.id_user = id_user;
+	public void setIdUser(Long id_user) {
+		this.idUser = id_user;
 	}
-	public String getFirst_name() {
-		return first_name;
+	public String getFirstName() {
+		return firstName;
 	}
-	public void setFirst_name(String first_name) {
-		this.first_name = first_name;
+	public void setFirstName(String first_name) {
+		this.firstName = first_name;
 	}
-	public String getLast_name() {
-		return last_name;
+	public String getLastName() {
+		return lastName;
 	}
-	public void setLast_name(String last_name) {
-		this.last_name = last_name;
+	public void setLastName(String last_name) {
+		this.lastName = last_name;
 	}
 	public String getPassword() {
 		return password;
@@ -107,11 +121,11 @@ public class Users {
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("Users [id_user=");
-		builder.append(id_user);
+		builder.append(idUser);
 		builder.append(", first_name=");
-		builder.append(first_name);
+		builder.append(firstName);
 		builder.append(", last_name=");
-		builder.append(last_name);
+		builder.append(lastName);
 		builder.append(", password=");
 		builder.append(password);
 		builder.append(", email=");
@@ -129,7 +143,7 @@ public class Users {
 	}
 	@Override
 	public int hashCode() {
-		return Objects.hash(createdAt, email, first_name, id_user, isActive, last_name, password, phone, updatedAt);
+		return Objects.hash(createdAt, email, firstName, idUser, isActive, lastName, password, phone, updatedAt);
 	}
 	@Override
 	public boolean equals(Object obj) {
@@ -141,8 +155,8 @@ public class Users {
 			return false;
 		Users other = (Users) obj;
 		return Objects.equals(createdAt, other.createdAt) && Objects.equals(email, other.email)
-				&& Objects.equals(first_name, other.first_name) && Objects.equals(id_user, other.id_user)
-				&& isActive == other.isActive && Objects.equals(last_name, other.last_name)
+				&& Objects.equals(firstName, other.firstName) && Objects.equals(idUser, other.idUser)
+				&& isActive == other.isActive && Objects.equals(lastName, other.lastName)
 				&& Objects.equals(password, other.password) && Objects.equals(phone, other.phone)
 				&& Objects.equals(updatedAt, other.updatedAt);
 	}
