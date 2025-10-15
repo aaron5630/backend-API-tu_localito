@@ -42,6 +42,18 @@ public class Product {
 	@Column(name = "is_active", columnDefinition = "TINYINT DEFAULT 1")
 	private Boolean isActive;
 
+	
+	@ManyToOne
+	private Product product;
+	
+	public Product getProduct() {
+		return product;
+	}
+
+	public void setProduct(Product product) {
+		this.product = product;
+	}
+
 	// ============================== 🔹 Constructores 🔹 ==============================
 	// 🔹 Constructor vacío
 	public Product() {

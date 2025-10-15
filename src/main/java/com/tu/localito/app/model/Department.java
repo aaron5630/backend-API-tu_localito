@@ -6,6 +6,7 @@ import java.util.Objects;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -15,7 +16,8 @@ public class Department {
     private Long id;
     @Column(name="department_name", length=100, nullable=false)
     private String departmentName;
-  
+    
+    
     
     //===============================
     public Department() {}

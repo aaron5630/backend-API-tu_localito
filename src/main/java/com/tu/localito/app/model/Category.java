@@ -17,6 +17,18 @@ public class Category {
     @Column(name = "category_name", length = 30, nullable = false)
     private String categoryName;
 
+    
+    @ManyToOne()
+    private Department department;
+    
+	public Department getDepartment() {
+		return department;
+	}
+
+	public void setDepartment(Department department) {
+		this.department = department;
+	}
+
 	// ============================== 🔹 Constructores 🔹 ==============================
     // 🔹 Constructor vacío (requerido por JPA)
     public Category() {
