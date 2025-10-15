@@ -1,7 +1,9 @@
 package com.tu.localito.app.model;
-
 import java.time.LocalDateTime;
 import java.util.Objects;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -24,15 +26,19 @@ public class Users {
 	private String email;
 	@Column(name = "phone", length = 10, nullable = false)
 	private String phone;
+	@CreationTimestamp
 	@Column(name = "created_at", nullable = false)
 	private LocalDateTime createdAt;
+	@UpdateTimestamp
 	@Column(name = "updated_at", nullable = false)
 	private LocalDateTime updatedAt;
 	@Column(name = "is_active", nullable = false)
 	private boolean isActive;
+	
+	public Users() {};
+	
 	public Users(Long id_user, String first_name, String last_name, String password, String email, String phone,
 			LocalDateTime createdAt, LocalDateTime updatedAt, boolean isActive) {
-		super();
 		this.id_user = id_user;
 		this.first_name = first_name;
 		this.last_name = last_name;

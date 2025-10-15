@@ -1,0 +1,63 @@
+package com.tu.localito.app.model;
+
+import java.util.Objects;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "roles")
+public class Roles {
+	@Id 
+	@Column(name = "id_role")
+	private Long idRole;
+	@Column(name = "rol_name", length = 30, nullable = false)
+	private String rolName;
+	
+	
+	public Roles(Long idRole, String rolName) {
+		this.idRole = idRole;
+		this.rolName = rolName;
+	}
+	public Long getIdRole() {
+		return idRole;
+	}
+	public void setIdRole(Long idRole) {
+		this.idRole = idRole;
+	}
+	public String getRolName() {
+		return rolName;
+	}
+	public void setRolName(String rolName) {
+		this.rolName = rolName;
+	}
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Roles [idRole=");
+		builder.append(idRole);
+		builder.append(", rolName=");
+		builder.append(rolName);
+		builder.append("]");
+		return builder.toString();
+	}
+	@Override
+	public int hashCode() {
+		return Objects.hash(idRole, rolName);
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Roles other = (Roles) obj;
+		return Objects.equals(idRole, other.idRole) && Objects.equals(rolName, other.rolName);
+	}
+	
+	
+}
