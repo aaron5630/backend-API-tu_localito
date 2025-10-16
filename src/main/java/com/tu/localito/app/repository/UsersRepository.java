@@ -9,12 +9,12 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.tu.localito.app.model.Users;
 
 public interface UsersRepository extends JpaRepository<Users,Long>{
-	 Iterable<Users> findByFirstName(String firstName);
+	 /*Iterable<Users> findByFirstName(String firstName);
 
-	 Iterable<Users> findAllByActiveTrue();
-	 Iterable<Users> findAllByActiveFalse();
+	 //Iterable<Users> findAllByActiveTrue();
+	 //Iterable<Users> findAllByActiveFalse();
 
-	 Page<Users> findAllByActiveTrue(Pageable pageable);
+	 //Page<Users> findAllByActiveTrue(Pageable pageable);
 	 
-	 Optional<Users> findByEmail(String email);
+	 //Optional<Users> findByEmail(String email);*/
 }

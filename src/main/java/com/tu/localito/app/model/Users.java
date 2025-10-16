@@ -23,7 +23,7 @@ import jakarta.persistence.Table;
 public class Users {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id_user")
+	//@Column(name = "id_user")
 	private Long idUser;
 	@Column(name = "first_name", length = 30, nullable = false)
 	private String firstName;
