@@ -19,7 +19,6 @@ import jakarta.persistence.Table;
 public class Orders {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id_order")
 	private Integer idOrder;
 	
 	@Column(name = "total")

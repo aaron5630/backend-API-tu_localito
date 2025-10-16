@@ -17,7 +17,6 @@ public class OrdersHaveProducts {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id_order_details")
 	private Integer idOrderDetails;
 	
 	@Column(name = "quantity", nullable = false)

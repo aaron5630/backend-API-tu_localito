@@ -4,6 +4,7 @@ import java.util.Objects;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -11,8 +12,6 @@ import jakarta.persistence.Table;
 public class Address {
     @Id
     private Long id;
-    @Column(name="address", length=250, nullable=false)
-    private String address;
     @Column(name="country", length=100, nullable=false)
     private String country;
     @Column(name="state", length=45, nullable=false)
@@ -26,12 +25,14 @@ public class Address {
     @Column(name="apartment_number", length=50, nullable=false)
     private Long apartmentNumber;
     
+    @ManyToOne()
+    private Users user;
+    
     //===============================
     public Address() {}
 
-    public Address(Long id, String address, String country, String state, String postalCode, String street, Long streetNumber, Long apartmentNumber) {
+    public Address(Long id, String country, String state, String postalCode, String street, Long streetNumber, Long apartmentNumber) {
         this.id = id;
-        this.address = address;
         this.country = country;
         this.state = state;
         this.postalCode = postalCode;
@@ -49,14 +50,6 @@ public class Address {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
 	}
 
 	public String getCountry() {
@@ -114,8 +107,6 @@ public class Address {
 			StringBuilder builder = new StringBuilder();
 			builder.append("Address [id=");
 			builder.append(id);
-			builder.append(", address=");
-			builder.append(address);
 			builder.append(", country=");
 			builder.append(country);
 			builder.append(", state=");
@@ -137,7 +128,7 @@ public class Address {
  
 	@Override
 	public int hashCode() {
-		return Objects.hash(address, apartmentNumber, country, id, postalCode, state, street, streetNumber);
+		return Objects.hash( apartmentNumber, country, id, postalCode, state, street, streetNumber);
 	}
 
 	@Override
@@ -149,7 +140,7 @@ public class Address {
 		if (getClass() != obj.getClass())
 			return false;
 		Address other = (Address) obj;
-		return Objects.equals(address, other.address) && Objects.equals(apartmentNumber, other.apartmentNumber)
+		return  Objects.equals(apartmentNumber, other.apartmentNumber)
 				&& Objects.equals(country, other.country) && Objects.equals(id, other.id)
 				&& Objects.equals(postalCode, other.postalCode) && Objects.equals(state, other.state)
 				&& Objects.equals(street, other.street) && Objects.equals(streetNumber, other.streetNumber);

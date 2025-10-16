@@ -13,7 +13,6 @@ public class Product {
 	// ============================== 🔹 Atributos 🔹 ==============================
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id_product")
 	private Integer idProduct;
 
 	@Column(length = 10)

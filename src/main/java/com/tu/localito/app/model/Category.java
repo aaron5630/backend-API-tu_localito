@@ -11,7 +11,6 @@ public class Category {
 	// ============================== 🔹 Atributos 🔹 ==============================
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_category")
     private Integer idCategory;
 
     @Column(name = "category_name", length = 30, nullable = false)

@@ -18,7 +18,6 @@ import jakarta.persistence.Table;
 public class Roles {
 	@Id 
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id_role")
 	private Long idRole;
 	@Column(name = "rol_name", length = 30, nullable = false)
 	private String rolName;
