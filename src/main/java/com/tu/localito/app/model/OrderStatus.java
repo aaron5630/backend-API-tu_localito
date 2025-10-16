@@ -19,8 +19,7 @@ public class OrderStatus {
     //===============================
     public OrderStatus() {}
 
-    public OrderStatus(Long id, String statustName) {
-        this.id = id;
+    public OrderStatus(String statusName) {
         this.statusName = statusName;
     }
 
