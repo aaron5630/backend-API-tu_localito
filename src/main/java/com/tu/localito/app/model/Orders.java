@@ -10,6 +10,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -26,6 +27,12 @@ public class Orders {
 	@CreationTimestamp
 	@Column(name = "order_date")
 	private LocalDateTime orderDate;
+	
+	@ManyToOne
+	private Users user;
+	
+	@ManyToOne 
+	private OrderStatus orderStatus;
 	
 	//====Constructores====
 	

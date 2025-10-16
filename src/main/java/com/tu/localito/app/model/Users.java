@@ -54,9 +54,8 @@ public class Users {
 	
 	public Users() {};
 	
-	public Users(Long id_user, String first_name, String last_name, String password, String email, String phone,
+	public Users( String first_name, String last_name, String password, String email, String phone,
 			LocalDateTime createdAt, LocalDateTime updatedAt, boolean isActive) {
-		this.idUser = id_user;
 		this.firstName = first_name;
 		this.lastName = last_name;
 		this.password = password;

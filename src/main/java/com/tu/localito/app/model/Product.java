@@ -44,15 +44,9 @@ public class Product {
 
 	
 	@ManyToOne
-	private Product product;
+	//private Product product; 
+	private Category category;
 	
-	public Product getProduct() {
-		return product;
-	}
-
-	public void setProduct(Product product) {
-		this.product = product;
-	}
 
 	// ============================== 🔹 Constructores 🔹 ==============================
 	// 🔹 Constructor vacío

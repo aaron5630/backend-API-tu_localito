@@ -7,6 +7,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -25,5 +26,13 @@ public class OrdersHaveProducts {
 	private BigDecimal purchasePrice;
 	@Column(name = "subtotal", nullable = false)
 	private BigDecimal subtotal;
+	
+	@ManyToOne
+	private Orders order;
+	
+	@ManyToOne
+	private Product product;
+	
+	
 	
 }
