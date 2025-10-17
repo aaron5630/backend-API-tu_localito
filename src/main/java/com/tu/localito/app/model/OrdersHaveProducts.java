@@ -32,10 +32,11 @@ public class OrdersHaveProducts {
 	
 	@ManyToOne
 	private Product product;
+	
+	public OrdersHaveProducts() {};
 
 	public OrdersHaveProducts(Integer quantity, BigDecimal purchasePrice, BigDecimal subtotal, Orders order,
 			Product product) {
-		super();
 		this.quantity = quantity;
 		this.purchasePrice = purchasePrice;
 		this.subtotal = subtotal;

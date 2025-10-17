@@ -25,6 +25,8 @@ public class Roles {
 	@ManyToMany(mappedBy = "roles")
 	private Set<Users> users = new HashSet<>();
 	
+	public Roles() {};
+	
 	public Roles( String rolName) {
 		this.rolName = rolName;
 	}
@@ -40,6 +42,8 @@ public class Roles {
 	public void setRolName(String rolName) {
 		this.rolName = rolName;
 	}
+	
+	
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();

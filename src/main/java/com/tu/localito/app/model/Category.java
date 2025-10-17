@@ -20,6 +20,12 @@ public class Category {
     @ManyToOne()
     private Department department;
     
+    
+    public Category(String categoryName, Department department) {
+		this.categoryName = categoryName;
+		this.department = department;
+	}
+
 	public Department getDepartment() {
 		return department;
 	}

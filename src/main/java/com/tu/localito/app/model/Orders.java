@@ -33,13 +33,19 @@ public class Orders {
 	
 	@ManyToOne 
 	private OrderStatus orderStatus;
+	
+	@ManyToOne
+	private Address address;
+	
+	public Orders() {}
 
-	public Orders(BigDecimal total, LocalDateTime orderDate, Users user, OrderStatus orderStatus) {
+	public Orders(BigDecimal total, LocalDateTime orderDate, Users user, OrderStatus orderStatus, Address address) {
 		super();
 		this.total = total;
 		this.orderDate = orderDate;
 		this.user = user;
 		this.orderStatus = orderStatus;
+		this.address = address;
 	}
 
 	public Integer getIdOrder() {
@@ -82,6 +88,14 @@ public class Orders {
 		this.orderStatus = orderStatus;
 	}
 
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -95,13 +109,15 @@ public class Orders {
 		builder.append(user);
 		builder.append(", orderStatus=");
 		builder.append(orderStatus);
+		builder.append(", address=");
+		builder.append(address);
 		builder.append("]");
 		return builder.toString();
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(idOrder, orderDate, orderStatus, total, user);
+		return Objects.hash(address, idOrder, orderDate, orderStatus, total, user);
 	}
 
 	@Override
@@ -113,12 +129,12 @@ public class Orders {
 		if (getClass() != obj.getClass())
 			return false;
 		Orders other = (Orders) obj;
-		return Objects.equals(idOrder, other.idOrder) && Objects.equals(orderDate, other.orderDate)
-				&& Objects.equals(orderStatus, other.orderStatus) && Objects.equals(total, other.total)
-				&& Objects.equals(user, other.user);
-	}
+		return Objects.equals(address, other.address) && Objects.equals(idOrder, other.idOrder)
+				&& Objects.equals(orderDate, other.orderDate) && Objects.equals(orderStatus, other.orderStatus)
+				&& Objects.equals(total, other.total) && Objects.equals(user, other.user);
+	};
+
 	
-	//====Constructores====
 	
 	
 	

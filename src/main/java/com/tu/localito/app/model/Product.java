@@ -53,8 +53,8 @@ public class Product {
 	}
 
 	// 🔹 Constructor con atributos (sin id porque es autogenerado)
-	public Product(String sku, String productName, BigDecimal price, Integer quantity, String unitOfMeasure, String imagen,
-			LocalDateTime createdAt, LocalDateTime updatedAt, Boolean isActive) {
+	public Product(String sku, String productName, BigDecimal price, Integer quantity, String unitOfMeasure,
+			String imagen, LocalDateTime createdAt, LocalDateTime updatedAt, Boolean isActive, Category category) {
 		this.sku = sku;
 		this.productName = productName;
 		this.price = price;
@@ -64,6 +64,7 @@ public class Product {
 		this.createdAt = createdAt;
 		this.updatedAt = updatedAt;
 		this.isActive = isActive;
+		this.category = category;
 	}
 
 	// ============================== 🔹 Getters y Setters 🔹 ==============================
