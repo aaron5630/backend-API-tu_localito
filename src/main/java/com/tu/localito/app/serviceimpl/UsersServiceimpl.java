@@ -16,6 +16,7 @@ public class UsersServiceimpl {
 	public Users save(Users user) {
 		Optional<Users> existingUser = userRepository.findByEmail(user.getEmail());
 		if (existingUser.isEmpty()){
+			//TODO Revisar si creamos el id de rol. 
 			return userRepository.save(user);
 		}
 		throw new IllegalStateException("El usuario ya está registrado.");
@@ -31,7 +32,11 @@ public class UsersServiceimpl {
 		return existingUser;
 	}
 	
-	//Update 
+	public Iterable<Users> findAll(){
+		Iterable<Users> users = userRepository.findAll();
+		return users;
+	}
+	//UPDATE
 	public Users update(Long id, Users user ){
 		Optional<Users> userOptional = userRepository.findById(id);
 		if (userOptional.isEmpty()){
@@ -44,6 +49,7 @@ public class UsersServiceimpl {
 		return existingUser;
 	}
 	
+	// DELETE
 	public void deleteById(Long id) {
 		Optional<Users> userOptional = userRepository.findById(id);
 		if (userOptional.isEmpty()){
