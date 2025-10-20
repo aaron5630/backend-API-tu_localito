@@ -2,6 +2,7 @@ package com.tu.localito.app.serviceimpl;
 
 import java.util.Optional;
 
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.tu.localito.app.model.Users;
@@ -11,9 +12,11 @@ import com.tu.localito.app.service.UsersService;
 @Service
 public class UsersServiceImpl implements UsersService {
     private final UsersRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
-    public UsersServiceImpl(UsersRepository userRepository) {
+    public UsersServiceImpl(UsersRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     // CREATE
@@ -23,6 +26,7 @@ public class UsersServiceImpl implements UsersService {
         if (existingUser.isEmpty()){
         	
             // TODO: Revisar si creamos el id de rol
+        		user.setPassword(passwordEncoder.encode( user.getPassword()) );
             return userRepository.save(user);
         }
         throw new IllegalStateException("El usuario ya está registrado.");
@@ -54,6 +58,7 @@ public class UsersServiceImpl implements UsersService {
         existingUser.setFirstName(user.getFirstName());
         existingUser.setLastName(user.getLastName());
         existingUser.setPhone(user.getPhone());
+        existingUser.setPassword(passwordEncoder.encode( user.getPassword()) );
         return userRepository.save(existingUser);
     }
 
