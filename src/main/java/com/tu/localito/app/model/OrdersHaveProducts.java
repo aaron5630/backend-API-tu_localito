@@ -8,6 +8,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
@@ -17,7 +18,7 @@ public class OrdersHaveProducts {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer idOrderDetails;
+	private Long id;
 	
 	@Column(name = "quantity", nullable = false)
 	private Integer quantity;
@@ -28,9 +29,11 @@ public class OrdersHaveProducts {
 	private BigDecimal subtotal;
 	
 	@ManyToOne
+	@JoinColumn(name = "order_id", referencedColumnName = "id")
 	private Orders order;
 	
 	@ManyToOne
+	@JoinColumn(name = "product_id", referencedColumnName = "id")
 	private Product product;
 	
 	public OrdersHaveProducts() {};
@@ -44,12 +47,12 @@ public class OrdersHaveProducts {
 		this.product = product;
 	}
 
-	public Integer getIdOrderDetails() {
-		return idOrderDetails;
+	public Long getIdOrderDetails() {
+		return id;
 	}
 
-	public void setIdOrderDetails(Integer idOrderDetails) {
-		this.idOrderDetails = idOrderDetails;
+	public void setIdOrderDetails(Long idOrderDetails) {
+		this.id = idOrderDetails;
 	}
 
 	public Integer getQuantity() {
@@ -96,7 +99,7 @@ public class OrdersHaveProducts {
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("OrdersHaveProducts [idOrderDetails=");
-		builder.append(idOrderDetails);
+		builder.append(id);
 		builder.append(", quantity=");
 		builder.append(quantity);
 		builder.append(", purchasePrice=");
@@ -113,7 +116,7 @@ public class OrdersHaveProducts {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(idOrderDetails, order, product, purchasePrice, quantity, subtotal);
+		return Objects.hash(id, order, product, purchasePrice, quantity, subtotal);
 	}
 
 	
@@ -127,7 +130,7 @@ public class OrdersHaveProducts {
 		if (getClass() != obj.getClass())
 			return false;
 		OrdersHaveProducts other = (OrdersHaveProducts) obj;
-		return Objects.equals(idOrderDetails, other.idOrderDetails) && Objects.equals(order, other.order)
+		return Objects.equals(id, other.id) && Objects.equals(order, other.order)
 				&& Objects.equals(product, other.product) && Objects.equals(purchasePrice, other.purchasePrice)
 				&& Objects.equals(quantity, other.quantity) && Objects.equals(subtotal, other.subtotal);
 	}

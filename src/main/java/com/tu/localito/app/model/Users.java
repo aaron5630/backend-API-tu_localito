@@ -46,8 +46,8 @@ public class Users {
 	@ManyToMany()
 	@JoinTable(
 		name="user_has_roles",
-		joinColumns = @JoinColumn(name = "user_id"),
-		inverseJoinColumns = @JoinColumn(name = "role_id")
+		joinColumns = @JoinColumn(name = "id_user"),
+		inverseJoinColumns = @JoinColumn(name = "id_role")
 		)
 		Set<Roles> roles = new HashSet<>();
 	

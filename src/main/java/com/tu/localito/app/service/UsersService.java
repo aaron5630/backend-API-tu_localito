@@ -1,7 +1,9 @@
 package com.tu.localito.app.service;
 
-import com.tu.localito.app.model.Users;
+import org.springframework.stereotype.Service;
 
+import com.tu.localito.app.model.Users;
+@Service
 public interface UsersService {
 	Users save(Users user);
 	
@@ -11,7 +13,7 @@ public interface UsersService {
 	
 	Users update(Long id, Users user);
 	
-	void deleteByID(Long id);
+	void deleteById(Long id);
 	
 
 }

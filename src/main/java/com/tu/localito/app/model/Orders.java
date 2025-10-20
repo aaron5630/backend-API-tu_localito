@@ -11,6 +11,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
@@ -19,7 +20,7 @@ import jakarta.persistence.Table;
 public class Orders {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer idOrder;
+	private Long id;
 	
 	@Column(name = "total")
 	private BigDecimal total;
@@ -29,18 +30,20 @@ public class Orders {
 	private LocalDateTime orderDate;
 	
 	@ManyToOne
+	@JoinColumn(name = "user_id", referencedColumnName = "id")
 	private Users user;
 	
-	@ManyToOne 
+	@ManyToOne
+	@JoinColumn(name = "order_status_id", referencedColumnName = "id") 
 	private OrderStatus orderStatus;
 	
 	@ManyToOne
+	@JoinColumn(name = "address_id", referencedColumnName = "id")
 	private Address address;
 	
 	public Orders() {}
 
 	public Orders(BigDecimal total, LocalDateTime orderDate, Users user, OrderStatus orderStatus, Address address) {
-		super();
 		this.total = total;
 		this.orderDate = orderDate;
 		this.user = user;
@@ -48,12 +51,12 @@ public class Orders {
 		this.address = address;
 	}
 
-	public Integer getIdOrder() {
-		return idOrder;
+	public Long getIdOrder() {
+		return id;
 	}
 
-	public void setIdOrder(Integer idOrder) {
-		this.idOrder = idOrder;
+	public void setIdOrder(Long idOrder) {
+		this.id = idOrder;
 	}
 
 	public BigDecimal getTotal() {
@@ -100,7 +103,7 @@ public class Orders {
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("Orders [idOrder=");
-		builder.append(idOrder);
+		builder.append(id);
 		builder.append(", total=");
 		builder.append(total);
 		builder.append(", orderDate=");
@@ -117,7 +120,7 @@ public class Orders {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(address, idOrder, orderDate, orderStatus, total, user);
+		return Objects.hash(address, id, orderDate, orderStatus, total, user);
 	}
 
 	@Override
@@ -129,7 +132,7 @@ public class Orders {
 		if (getClass() != obj.getClass())
 			return false;
 		Orders other = (Orders) obj;
-		return Objects.equals(address, other.address) && Objects.equals(idOrder, other.idOrder)
+		return Objects.equals(address, other.address) && Objects.equals(id, other.id)
 				&& Objects.equals(orderDate, other.orderDate) && Objects.equals(orderStatus, other.orderStatus)
 				&& Objects.equals(total, other.total) && Objects.equals(user, other.user);
 	};

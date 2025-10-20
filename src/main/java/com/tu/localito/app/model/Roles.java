@@ -18,7 +18,7 @@ import jakarta.persistence.Table;
 public class Roles {
 	@Id 
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long idRole;
+	private Long id;
 	@Column(name = "rol_name", length = 30, nullable = false)
 	private String rolName;
 	
@@ -31,10 +31,10 @@ public class Roles {
 		this.rolName = rolName;
 	}
 	public Long getIdRole() {
-		return idRole;
+		return id;
 	}
 	public void setIdRole(Long idRole) {
-		this.idRole = idRole;
+		this.id = idRole;
 	}
 	public String getRolName() {
 		return rolName;
@@ -48,7 +48,7 @@ public class Roles {
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("Roles [idRole=");
-		builder.append(idRole);
+		builder.append(id);
 		builder.append(", rolName=");
 		builder.append(rolName);
 		builder.append("]");
@@ -56,7 +56,7 @@ public class Roles {
 	}
 	@Override
 	public int hashCode() {
-		return Objects.hash(idRole, rolName);
+		return Objects.hash(id, rolName);
 	}
 	@Override
 	public boolean equals(Object obj) {
@@ -67,7 +67,7 @@ public class Roles {
 		if (getClass() != obj.getClass())
 			return false;
 		Roles other = (Roles) obj;
-		return Objects.equals(idRole, other.idRole) && Objects.equals(rolName, other.rolName);
+		return Objects.equals(id, other.id) && Objects.equals(rolName, other.rolName);
 	}
 	
 	

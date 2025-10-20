@@ -11,13 +11,14 @@ public class Category {
 	// ============================== 🔹 Atributos 🔹 ==============================
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idCategory;
+    private Long id;
 
     @Column(name = "category_name", length = 30, nullable = false)
     private String categoryName;
 
     
-    @ManyToOne()
+    @ManyToOne
+	@JoinColumn(name = "department_id", referencedColumnName = "id")
     private Department department;
     
     
@@ -46,12 +47,12 @@ public class Category {
 
 	// ============================== 🔹 Getters y Setters 🔹 ==============================
     // 🔹 Getters y Setters
-    public Integer getIdCategory() {
-        return idCategory;
+    public Long getIdCategory() {
+        return id;
     }
 
-    public void setIdCategory(Integer idCategory) {
-        this.idCategory = idCategory;
+    public void setIdCategory(Long idCategory) {
+        this.id = idCategory;
     }
 
     public String getCategoryName() {
@@ -67,7 +68,7 @@ public class Category {
     @Override
     public String toString() {
         return "Category{" +
-                "idCategory=" + idCategory +
+                "idCategory=" + id +
                 ", categoryName='" + categoryName + '\'' +
                 '}';
     }
@@ -75,7 +76,7 @@ public class Category {
     // 🔹 Override hashCode() y equals()
 	@Override
 	public int hashCode() {
-		return Objects.hash(categoryName, idCategory);
+		return Objects.hash(categoryName, id);
 	}
 
 	@Override
@@ -87,7 +88,7 @@ public class Category {
 		if (getClass() != obj.getClass())
 			return false;
 		Category other = (Category) obj;
-		return Objects.equals(categoryName, other.categoryName) && Objects.equals(idCategory, other.idCategory);
+		return Objects.equals(categoryName, other.categoryName) && Objects.equals(id, other.id);
 	}
     
 }

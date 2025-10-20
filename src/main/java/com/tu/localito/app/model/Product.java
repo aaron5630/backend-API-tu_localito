@@ -13,7 +13,7 @@ public class Product {
 	// ============================== 🔹 Atributos 🔹 ==============================
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer idProduct;
+	private Long id;
 
 	@Column(length = 10)
 	private String sku;
@@ -43,7 +43,7 @@ public class Product {
 
 	
 	@ManyToOne
-	//private Product product; 
+	@JoinColumn(name = "category_id", referencedColumnName = "id")
 	private Category category;
 	
 
@@ -68,12 +68,12 @@ public class Product {
 	}
 
 	// ============================== 🔹 Getters y Setters 🔹 ==============================
-	public Integer getIdProduct() {
-		return idProduct;
+	public Long getIdProduct() {
+		return id;
 	}
 
-	public void setIdProduct(Integer idProduct) {
-		this.idProduct = idProduct;
+	public void setIdProduct(Long idProduct) {
+		this.id = idProduct;
 	}
 
 	public String getSku() {
@@ -152,7 +152,7 @@ public class Product {
 	// 🔹 Override toString()
 	@Override
 	public String toString() {
-		return "Product{" + "idProduct=" + idProduct + ", sku='" + sku + '\'' + ", productName='" + productName + '\''
+		return "Product{" + "idProduct=" + id + ", sku='" + sku + '\'' + ", productName='" + productName + '\''
 				+ ", price=" + price + ", quantity=" + quantity + ", unitOfMeasure='" + unitOfMeasure + '\''
 				+ ", imagen='" + imagen + '\'' + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + ", isActive="
 				+ isActive + '}';
@@ -161,7 +161,7 @@ public class Product {
 	// 🔹 Override hashCode() y equals()
 	@Override
 	public int hashCode() {
-		return Objects.hash(createdAt, idProduct, imagen, isActive, price, productName, quantity, sku, unitOfMeasure,
+		return Objects.hash(createdAt, id, imagen, isActive, price, productName, quantity, sku, unitOfMeasure,
 				updatedAt);
 	}
 
@@ -174,7 +174,7 @@ public class Product {
 		if (getClass() != obj.getClass())
 			return false;
 		Product other = (Product) obj;
-		return Objects.equals(createdAt, other.createdAt) && Objects.equals(idProduct, other.idProduct)
+		return Objects.equals(createdAt, other.createdAt) && Objects.equals(id, other.id)
 				&& Objects.equals(imagen, other.imagen) && Objects.equals(isActive, other.isActive)
 				&& Objects.equals(price, other.price) && Objects.equals(productName, other.productName)
 				&& Objects.equals(quantity, other.quantity) && Objects.equals(sku, other.sku)
