@@ -21,6 +21,7 @@ public class UsersServiceImpl implements UsersService {
     public Users save(Users user) {
         Optional<Users> existingUser = userRepository.findByEmail(user.getEmail());
         if (existingUser.isEmpty()){
+        	
             // TODO: Revisar si creamos el id de rol
             return userRepository.save(user);
         }

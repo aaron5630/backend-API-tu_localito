@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,6 +26,15 @@ public class UsersController {
 	ResponseEntity<Users> createdUser(@RequestBody Users user){
 		Users createdUser = userService.save(user);
 		return ResponseEntity.status(201).body(createdUser);
+	}
+	
+	@PutMapping("/{id}") 
+	ResponseEntity<Users> updateById(
+			@PathVariable("id")Long id,
+			@RequestBody Users user
+			){
+		Users existingUser = userService.update(id, user);
+		return ResponseEntity.ok(existingUser);
 	}
 	
 	@GetMapping("/{id}")
