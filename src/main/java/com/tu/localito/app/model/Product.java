@@ -41,7 +41,6 @@ public class Product {
 	@Column(name = "is_active", columnDefinition = "TINYINT DEFAULT 1")
 	private Boolean isActive;
 
-	
 	@ManyToOne
 	@JoinColumn(name = "category_id", referencedColumnName = "id")
 	private Category category;
@@ -72,8 +71,8 @@ public class Product {
 		return id;
 	}
 
-	public void setIdProduct(Long idProduct) {
-		this.id = idProduct;
+	public void setIdProduct(Long id) {
+		this.id = id;
 	}
 
 	public String getSku() {
@@ -146,6 +145,9 @@ public class Product {
 
 	public void setIsActive(Boolean isActive) {
 		this.isActive = isActive;
+	}
+	public Long getCategory() {
+		return category.getIdCategory();
 	}
 
 	// ============================== 🔹 Overrided methods 🔹 ==============================

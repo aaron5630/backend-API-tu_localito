@@ -44,7 +44,7 @@ public class UsersController {
 	}
 	
 	@GetMapping 
-	ResponseEntity<Iterable<Users>> getAllRoles(){
+	ResponseEntity<Iterable<Users>> getAllUsers(){
 		return ResponseEntity.ok(userService.findAll());
 	}
 	

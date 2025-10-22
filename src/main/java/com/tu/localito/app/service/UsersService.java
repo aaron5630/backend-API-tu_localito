@@ -15,5 +15,4 @@ public interface UsersService {
 	
 	void deleteById(Long id);
 	
-
 }

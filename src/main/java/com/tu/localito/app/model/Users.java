@@ -138,9 +138,9 @@ public class Users {
 		this.isActive = isActive;
 	}
 
-	public Set<Roles> getRoles() {
-		return roles;
-	}
+	//public Set<Roles> getRoles() {
+		//return roles;
+	//}
 
 	public void setRoles(Set<Roles> roles) {
 		this.roles = roles;

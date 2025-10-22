@@ -49,7 +49,7 @@ public class UsersServiceImpl implements UsersService {
 
     // UPDATE
     @Override
-    public Users update(Long id, Users user) {
+    public Users update( Long id, Users user) {
         Optional<Users> userOptional = userRepository.findById(id);
         if (userOptional.isEmpty()){
             throw new IllegalStateException("El usuario no existe con id " + id);
