@@ -1,11 +1,15 @@
 package com.tu.localito.app.serviceimpl;
 
+import java.util.HashSet;
 import java.util.Optional;
+import java.util.Set;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.tu.localito.app.model.Roles;
 import com.tu.localito.app.model.Users;
+import com.tu.localito.app.repository.RolesRepository;
 import com.tu.localito.app.repository.UsersRepository;
 import com.tu.localito.app.service.UsersService;
 
@@ -13,10 +17,13 @@ import com.tu.localito.app.service.UsersService;
 public class UsersServiceImpl implements UsersService {
     private final UsersRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+    private final RolesRepository rolesRepository;
 
-    public UsersServiceImpl(UsersRepository userRepository, PasswordEncoder passwordEncoder) {
+    public UsersServiceImpl(UsersRepository userRepository, PasswordEncoder passwordEncoder, 
+    		RolesRepository rolesRepository) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
+        this.rolesRepository = rolesRepository;
     }
 
     // CREATE
@@ -27,6 +34,12 @@ public class UsersServiceImpl implements UsersService {
         	
             // TODO: Revisar si creamos el id de rol
         		user.setPassword(passwordEncoder.encode( user.getPassword()) );
+        		
+        		Set<Roles> roles = new HashSet<>();
+        		Roles rolCliente = rolesRepository.findByRolName("Cliente");
+        		roles.add(rolCliente);
+        		user.setRoles(roles);
+        		
             return userRepository.save(user);
         }
         throw new IllegalStateException("El usuario ya está registrado.");
