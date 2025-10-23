@@ -4,6 +4,9 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -31,10 +34,12 @@ public class Product {
 
 	@Column(length = 250)
 	private String imagen;
-
+	
+	@CreationTimestamp
 	@Column(name = "created_at", columnDefinition = "DATETIME DEFAULT CURRENT_TIMESTAMP")
 	private LocalDateTime createdAt;
-
+	@UpdateTimestamp
+	
 	@Column(name = "updated_at", columnDefinition = "DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
 	private LocalDateTime updatedAt;
 
@@ -146,10 +151,15 @@ public class Product {
 	public void setIsActive(Boolean isActive) {
 		this.isActive = isActive;
 	}
-	public Long getCategory() {
-		return category.getIdCategory();
+
+
+	public Category getCategory() {
+	    return category;
 	}
 
+	public void setCategory(Category category) {
+	    this.category = category;
+	}
 	// ============================== 🔹 Overrided methods 🔹 ==============================
 	// 🔹 Override toString()
 	@Override

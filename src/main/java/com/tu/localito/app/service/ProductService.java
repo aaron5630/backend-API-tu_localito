@@ -6,4 +6,6 @@ import com.tu.localito.app.model.Product;
 @Service
 public interface ProductService {
 	Iterable<Product> findAll();
+	
+	Product save(Product product);
 }

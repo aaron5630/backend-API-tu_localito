@@ -10,6 +10,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -43,7 +44,7 @@ public class Users {
 	@Column(name = "is_active", nullable = false)
 	private boolean isActive = true;
 	
-	@ManyToMany()
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(
 		name="user_has_roles",
 		joinColumns = @JoinColumn(name = "id_user"),
@@ -138,9 +139,9 @@ public class Users {
 		this.isActive = isActive;
 	}
 
-	//public Set<Roles> getRoles() {
-		//return roles;
-	//}
+	public Set<Roles> getRoles() {
+		return roles;
+	}
 
 	public void setRoles(Set<Roles> roles) {
 		this.roles = roles;

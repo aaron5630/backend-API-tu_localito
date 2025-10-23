@@ -47,11 +47,11 @@ public class Category {
 
 	// ============================== 🔹 Getters y Setters 🔹 ==============================
     // 🔹 Getters y Setters
-    public Long getIdCategory() {
+    public Long getId() {
         return id;
     }
 
-    public void setIdCategory(Long idCategory) {
+    public void setIdy(Long idCategory) {
         this.id = idCategory;
     }
 
