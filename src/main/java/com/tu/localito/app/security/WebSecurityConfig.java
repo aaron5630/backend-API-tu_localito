@@ -43,6 +43,7 @@ public class WebSecurityConfig {
             .authenticationProvider(authProvider())
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers(HttpMethod.POST,"/users").permitAll()
+                .requestMatchers(HttpMethod.POST,"/users/login").permitAll()
                 .requestMatchers(HttpMethod.POST,"/products").hasRole("ADMINISTRADOR")
                 .requestMatchers(HttpMethod.GET,"/users/**").hasRole("ADMINISTRADOR")
                 .requestMatchers(HttpMethod.DELETE,"/users").hasRole("ADMINISTRADOR")

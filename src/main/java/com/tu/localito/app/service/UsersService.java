@@ -15,4 +15,6 @@ public interface UsersService {
 	
 	void deleteById(Long id);
 	
+	Users login(String email, String password);
+	
 }

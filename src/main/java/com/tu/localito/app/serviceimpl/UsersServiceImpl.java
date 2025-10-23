@@ -86,4 +86,20 @@ public class UsersServiceImpl implements UsersService {
         userExisting.setActive(false);
         userRepository.save(userExisting);
     }
+    
+    @Override
+    public Users login(String email,String password) {
+    		Optional<Users> userExisting = userRepository.findByEmail(email) ;
+    		if (userExisting.isEmpty()) {
+    			throw new IllegalStateException("Email no registrado");
+    		}
+    		
+    		Users user = userExisting.get();
+    		
+    		if (!passwordEncoder.matches(password, user.getPassword())) {
+    			throw new IllegalStateException("La contraseña no coincide");
+    		}
+    		
+    		return user;
+    }
 }

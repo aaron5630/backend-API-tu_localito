@@ -1,5 +1,7 @@
 package com.tu.localito.app.controller;
 
+import java.util.Map;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,6 +29,12 @@ public class UsersController {
 		Users createdUser = userService.save(user);
 		return ResponseEntity.status(201).body(createdUser);
 	}
+	
+	@PostMapping("/login")
+	ResponseEntity<?> login(@RequestBody Users user){
+		Users userLogged = userService.login(user.getEmail(), user.getPassword());
+		return ResponseEntity.status(200).body(Map.of("email", userLogged.getEmail()));
+	} 
 	
 	@PutMapping("/{id}") 
 	ResponseEntity<Users> updateById(
