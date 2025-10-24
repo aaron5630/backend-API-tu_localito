@@ -13,7 +13,7 @@ import com.tu.localito.app.model.Product;
 import com.tu.localito.app.service.ProductService;
 
 @CrossOrigin( // ← agrega esto
-		origins = { "http://127.0.0.1:5500", "http://localhost:5500" }, methods = { RequestMethod.GET,
+		origins = { "http://127.0.0.1:5500", "http://localhost:5500", "https://aaron5630.github.io/tu-localito" }, methods = { RequestMethod.GET,
 				RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE,
 				RequestMethod.OPTIONS }, allowedHeaders = { "*" })
 @RestController
